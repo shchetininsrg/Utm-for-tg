@@ -13,6 +13,9 @@ function generateUtm() {
   if (result.textContent.length > 260) {
     validate.style.color = "red";
     validate.textContent = `${result.textContent.length} из 260 слишком много`;
+  } else {
+    validate.style.color = "black";
+    validate.textContent = `${result.textContent.length} из 260`;
   }
 }
 
