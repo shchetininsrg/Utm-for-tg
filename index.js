@@ -6,9 +6,11 @@ const result = document.querySelector(".result");
 const url = document.querySelector(".input_url");
 const validate = document.querySelector(".validate");
 const inputList = Array.from(document.getElementsByTagName("input"));
+const selectCity = document.querySelector(".select_city");
+const selectType = document.querySelector(".select_type");
 
 function generateUtm() {
-  result.textContent = `${url.value}?utm_source=tg&utm_medium=cpc&utm_campaign=${utmCompaign.value}&utm_content=type_id:${typeId.value}|city_id:${cityId.value}&erid=${erid.value}`;
+  result.textContent = `${url.value}?utm_source=tg&utm_medium=cpc&utm_campaign=${utmCompaign.value}&utm_content=type_id:${selectType.value}|city_id:${selectCity.value}&erid=${erid.value}`;
   validate.textContent = `${result.textContent.length} из 260`;
   if (result.textContent.length > 260) {
     validate.style.color = "red";
@@ -22,3 +24,6 @@ function generateUtm() {
 inputList.forEach((i) => {
   i.addEventListener("input", generateUtm);
 });
+
+selectCity.addEventListener("input", generateUtm);
+selectType.addEventListener("input", generateUtm);
