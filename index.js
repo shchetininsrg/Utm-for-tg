@@ -6,7 +6,6 @@ const result = document.querySelector('.result')
 const url = document.querySelector('.input_url')
 const validate = document.querySelector('.validate')
 const inputList = Array.from(document.getElementsByTagName("input"))
-console.log(inputList)
 
 function generateUtm() {
   result.textContent = `${url.value}?utm_source=tg&utm_medium=cpc&utm_campaign=${utmCompaign.value}&utm_content=type_id:${typeId.value}|city_id:${cityId.value}&erid=${erid.value}`
@@ -14,11 +13,9 @@ function generateUtm() {
   if(result.textContent.length > 260) {
     validate.style.color = "red"
   }
-  console.log(result.textContent.length)
 }
 
 inputList.forEach(i => {
-    console.log(i)
     i.addEventListener('input', generateUtm)
     
 });
