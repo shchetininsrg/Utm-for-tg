@@ -8,10 +8,10 @@ const validate = document.querySelector(".validate");
 const inputList = Array.from(document.getElementsByTagName("input"));
 const selectCity = document.querySelector(".select_city");
 const selectType = document.querySelector(".select_type");
+const callcenter = document.querySelector(".select_callcenter");
 
 function generateUtm() {
-  result.textContent = `${url.value}?utm_source=tg&utm_medium=cpc&utm_campaign=${utmCompaign.value}&utm_content=type_id:${selectType.value}|city_id:${selectCity.value}&erid=${erid.value}`;
-  validate.textContent = `${result.textContent.length} из 260`;
+  result.textContent = `${url.value}?utm_source=tg&utm_medium=cpc&utm_campaign=${utmCompaign.value}&utm_content=type_id:${selectType.value}${callcenter.value}|city_id:${selectCity.value}&erid=${erid.value}`;
   if (result.textContent.length > 260) {
     validate.style.color = "red";
     validate.textContent = `${result.textContent.length} из 260 слишком много`;
@@ -27,3 +27,4 @@ inputList.forEach((i) => {
 
 selectCity.addEventListener("input", generateUtm);
 selectType.addEventListener("input", generateUtm);
+callcenter.addEventListener("input", generateUtm);
